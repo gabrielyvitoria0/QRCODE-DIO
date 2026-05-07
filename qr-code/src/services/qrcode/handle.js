@@ -1,18 +1,18 @@
-import permittedCharacters from "./utils/permitted-characters.js";
+import qr from "qrcode-terminal";
+import chalk from "chalk";
 
-async function handle() {
-  let characters = [];
-  let password = "";
-
-  const passwordLength = process.env.PASSWORD_LENGTH;
-  characters = await permittedCharacters();
-
-  for (let i = 0; i < passwordLength; i++) {
-    const index = Math.floor(Math.random() * characters.length);
-    password += characters[index];
+async function handle(err, result) {
+  if (err) {
+    console.log("error on application");
+    return;
   }
 
-  return password;
+  const isSmall = result.type == 2;
+
+  qr.generate(result.link, { small: isSmall }, (qrcode) => {
+    console.log(chalk.green("QR Code gerado com sucesso:\n"));
+    console.log(qrcode);
+  });
 }
 
 export default handle;
