@@ -2,7 +2,7 @@ QRCode Generator
 
 Projeto desenvolvido durante meus estudos na DIO, focado em back-end e automações com Node.js.
 
-✨ Sobre o projeto
+ Sobre o projeto
 
 Esse projeto gera QR Codes diretamente pelo terminal utilizando JavaScript e Node.js.
 
